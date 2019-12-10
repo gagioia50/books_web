@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BooksWeb</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </head>
+  
+  <body> 
+    <div style="text-align:center;">
+      <h1 id="main-title"></h1>
+      <button type="button" class="btn btn-primary btn-lg add-book" data-toggle="modal" data-target="#myModal">Add Book</button>
+    </div>
+
+    <!-- myModal -->
+    <div class="container">
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+
+          <div class="modal-content">
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="input-title" class="col-form-label">Titolo</label>
+                  <input id="input-title" type="input" class="form-control"></input>
+                </div>
+                <div class="form-group">
+                  <label for="input-author" class="col-form-label">Autore</label>
+                  <input id="input-author" type="input" class="form-control"></input>
+                </div>
+                <div class="form-group">
+                  <label for="input-editor" class="col-form-label">Editore</label>
+                  <input id="input-editor" type="input" class="form-control"></input>
+                </div>
+                <div class="form-group">
+                  <label for="input-note" class="col-form-label">Note</label>
+                  <input id="input-note" type="input" class="form-control"></input>
+                </div>
+                
+                <div class="form-row">  
+                  <div class="form-group col-md-6">
+                    <label for="datePicker">Data</label>
+                    <input id="datePicker" type="date" class="form-control"></input>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="input-pages">Pagine</label>
+                    <input id="input-pages" type="input" class="form-control"></input>
+                  </div>
+                </div>
+
+                <div class="form-row">  
+                  <div class="form-group col-md-6">
+                    <label for="input-price">Prezzo</label>
+                    <input id="input-price" type="input" class="form-control"></input>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="input-location">Posizione</label>
+                    <input id="input-location" type="input" class="form-control"></input>
+                  </div>
+                </div>
+                  
+              </form>
+            </div>
+            
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary save-changes" data-dismiss="modal">Save Changes</button>
+              <button type="button" class="btn btn-primary save-book" data-dismiss="modal">Save Book</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- myDelete -->
+    <div class="container">
+      <div class="modal fade" id="myDelete" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+
+          <div class="modal-content">
+            
+            <div class="modal-body">
+              <p id="para-delete"></p>
+            </div>
+            
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary yes-delete" data-dismiss="modal">YES</button>
+              <button type="button" class="btn btn-primary no-delete" data-dismiss="modal">NO</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- container for books table -->
+    <div id="div_table" class="style-mytable">
+      <table class="table table-bordered" id="myTable">
+        <thead>
+          <tr>
+            <th style="width: 40%">Titolo</th>
+            <th style="width: 20%">Autore</th>
+            <th style="width: 20%">Editore</th>
+            <th style="width: 10%">Data</th>
+            <th style="width: 5%"></th>
+            <th style="width: 5%"></th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+    
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-firestore.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyATgUvHDUn2o1Rohcbo6Rutcg5BXQpaBq8",
+        authDomain: "books-8bcac.firebaseapp.com",
+        databaseURL: "https://books-8bcac.firebaseio.com",
+        projectId: "books-8bcac",
+        storageBucket: "books-8bcac.appspot.com",
+        messagingSenderId: "626654589700"
+      };
+      firebase.initializeApp(config);
+    </script>
+
+    <script src="books.js"></script>
+    <script src="scripts.js"></script>
+
+  </body>
+</html>
